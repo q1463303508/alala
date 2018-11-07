@@ -1,12 +1,9 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
-
-ReactDOM.render(<App />, document.getElementById('root'));
-
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: http://bit.ly/CRA-PWA
-serviceWorker.unregister();
+import dva from 'dva'
+import rootRouter from './job/router'
+import home from './job/model/home'
+console.log(home)
+// 实例化一个dva应用
+const app = dva();
+app.model(home)
+app.router(rootRouter);// 挂载应用
+app.start('#root')// 启动
